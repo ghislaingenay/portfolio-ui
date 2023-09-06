@@ -4,6 +4,7 @@ import './styles.scss';
 import { JPMockUp } from '@jp-mock/JPLanguage';
 import { Routing } from '@interface';
 import ProjectPage from '@home/ProjectPage';
+import MainNav from '@home/MainNav';
 
 export function App() {
   const choseProject = (key: string) => {
@@ -27,11 +28,7 @@ export function App() {
 
   return (
     <div id="app">
-      <nav className="app-nav">
-        <div />
-        <div />
-        <div />
-      </nav>
+      <MainNav />
 
       <JPMockUp />
     </div>

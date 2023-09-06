@@ -1,18 +1,110 @@
 // Set the position in place
+
+$extraSmallSize: 100px;
+$smallSize: 200px;
+$medium: 300px;
+$large: 400px;
+$extraLarge: 600px;
+
+@mixin circle($pixels) {
+  width: $pixels;
+  height: $pixels;
+  border-radius: 50%;
+}
+
+@mixin alignTopLeft($pixels) {
+  top: calc(#{$pixels} / 2 - #{$pixels});
+  left: calc(#{$pixels} / 2 - #{$pixels});
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes createNav {
+  from {
+    transform: scale(0);
+    border-radius: 50%;
+  }
+  to {
+    transform: scale(1);
+    width: 50%;
+    height: 100%;
+  }
+}
+
+div.app-nav-circle {
+  display: none;
+}
+
+div.app-circle {
+  display: none;
+}
+
+// set the position and display of all elements
 div#app {
   position: relative;
   nav.app-nav {
     position: absolute;
+    div {
+      &:not(:first-child) {
+        display: none;
+      }
+      position: absolute;
+    }
+    &:hover {
+      div.app-circle {
+        display: block;
+        animation: scaleUp 1s ease-in-out normal;
+      }
+      div.app-nav-circle {
+        display: block;
+        animation: scaleUp ease-in-out normal 0.5s;
+      }
+    }
   }
 }
 
+// Implement circles in nav
 .app-nav {
-  background-color: green;
-  display: flex;
-
-  top: -50px;
-  border-radius: 50%;
-  left: -50px;
-  width: 100px;
-  height: 100px;
+  div {
+    &:first-child {
+      @include circle($smallSize);
+      @include alignTopLeft($smallSize);
+      background-color: green;
+      z-index: 10;
+      opacity: 1;
+    }
+    &:nth-child(2) {
+      @include circle($medium);
+      @include alignTopLeft($medium);
+      background-color: purple;
+      z-index: 9;
+      // animation: scaleUp ease-in-out normal 0.5s;
+    }
+    &:nth-child(3) {
+      @include circle($large);
+      @include alignTopLeft($large);
+      background-color: orangered;
+      z-index: 8;
+      // animation: scaleUp ease-in-out normal 0.5s;
+    }
+    &:nth-last-child(2) {
+      @include circle($extraLarge);
+      @include alignTopLeft($extraLarge);
+      background-color: purple;
+      z-index: 7;
+    }
+    &:last-child {
+      @include circle($extraLarge);
+      @include alignTopLeft($extraLarge);
+      background-color: green;
+      z-index: 12;
+    }
+  }
 }

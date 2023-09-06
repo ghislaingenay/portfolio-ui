@@ -58,8 +58,7 @@ export const JPMockUp = () => {
           <li>
             <img src={headsetIcon} alt="headset icon" />
             <p>
-              <span className="bold">Engaging audio</span> with reapting
-              automatic
+              <span className="bold">Engaging audio</span> with repeat automatic
             </p>
           </li>
           <li>
