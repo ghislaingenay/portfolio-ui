@@ -1,0 +1,135 @@
+.jp-img-container {
+  background-image: url('./lib/jp-language/assets/bg.jpg');
+  background-size: 60% 80%;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.arrow {
+  margin: 0 0rem 0.2rem 0.35rem;
+  border: solid rgba(0, 0, 0, 0.7);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.arrow-down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.jp-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-inline: auto;
+  margin: 2rem auto;
+  gap: 1rem;
+  img {
+    mix-blend-mode: multiply;
+    flex: 1;
+    width: auto;
+    height: 45px;
+  }
+}
+
+.jp-right-nav {
+  flex: 4;
+  display: inline-block;
+  text-align: right;
+  list-style-type: none;
+  list-style-position: inside;
+  li {
+    padding-inline: 1rem;
+    margin-inline: 0.25rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: normal;
+    &:last-child {
+      border: solid black 1px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      margin-right: 0;
+      &:hover {
+        transition: 0.2s ease-in-out all;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+      }
+    }
+  }
+}
+
+.jp-hero-banner {
+  margin-top: 5rem;
+  display: grid;
+  justify-items: start;
+  gap: 15px;
+}
+
+.jp-hero-title {
+  font-size: 3rem;
+  line-height: 1;
+  width: 50%;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.jp-hero-description {
+  width: 40%;
+  line-height: 1.5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: normal;
+  margin: 1rem 0;
+}
+
+.jp-hero-button {
+  background-color: darkslateblue;
+  color: rgb(252, 252, 234);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  &:hover {
+    transition: 0.2s ease-out all;
+    background-color: rgb(252, 252, 234);
+    color: darkslateblue;
+  }
+}
+
+.jp-why-blingual {
+  margin-top: 5rem;
+  ul {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: space-between;
+      gap: 2rem;
+      img {
+        width: 50px;
+        height: auto;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.jp-dropdown {
+  transition: 0.5s all 3s;
+  position: absolute;
+  top: 5rem;
+  width: 100px;
+  border-radius: 1rem;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
