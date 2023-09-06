@@ -15,7 +15,8 @@
     "baseUrl": ".",
     "paths": {
       "@interface": ["./src/global.interface"],
-      "@jp-mock/*": ["./src/lib/jp-language/*"]
+      "@jp-mock/*": ["./src/lib/jp-language/*"],
+      "@home/*": ["./src/lib/home/*"]
     },
     "jsx": "react-jsx",
     "allowJs": false,

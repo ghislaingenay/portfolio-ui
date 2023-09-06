@@ -3,3 +3,5 @@ export interface Routing {
   name: string;
   component: JSX.Element;
 }
+
+export type KeyRoute = Routing['key'];

@@ -2,14 +2,15 @@
 import { useState } from 'react';
 import './styles.scss';
 import { JPMockUp } from '@jp-mock/JPLanguage';
+import { Routing } from '@interface';
+import ProjectPage from '@home/ProjectPage';
 
 export function App() {
-  // const routing = ['home', 'animation'];
-  // const choseProject = (key: string) => {
-  //   console.log(key);
-  // };
+  const choseProject = (key: string) => {
+    console.log(key);
+  };
 
-  // const routing = [
+  // const routing: Routing[] = [
   //   {
   //     key: 'home',
   //     name: 'Home',
@@ -22,11 +23,19 @@ export function App() {
   //   },
   // ];
 
-  // const [selectedPath, setSelectedPath] = useState('/');
-
   // const isInitialPath = (path: string) => selectedPath === path;
 
-  return <JPMockUp />;
+  return (
+    <div id="app">
+      <nav className="app-nav">
+        <div />
+        <div />
+        <div />
+      </nav>
+
+      <JPMockUp />
+    </div>
+  );
 }
 
 export default App;
