@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@use './styles/reset';
+@use './styles/variables';
+@use './styles/global';
+
+// Main page
+@use './styles/app';
+
+// Mock ups
+@use './styles/jp-mock';
+
+// GLOBAL STYLES
+.container {
+  max-width: 1280px;
+  padding-inline: 1rem;
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @media screen and (max-width: 1280px) {
+    padding-inline: 1rem;
+  }
+
+  .small-container {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
