@@ -1,0 +1,19 @@
+name: main
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Nx initialization
+        uses: nrwl/nx-set-shas@v3
+      - run: npm ci
+      - run: npx nx format:check
+      - run: npx nx affected -t lint --parallel=2
+      - run: npx nx affected -t build --parallel=2
