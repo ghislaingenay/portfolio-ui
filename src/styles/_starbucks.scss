@@ -1,4 +1,12 @@
-// wrapper
+@mixin starbucksContainer() {
+  width: 95%;
+  @media screen and (min-width: 1024px) {
+    width: 80%;
+  }
+  margin-inline: auto;
+}
+
+// WRAPPER
 section#starbucks {
   width: 100%;
   padding-inline: 1rem;
@@ -9,14 +17,10 @@ section#starbucks {
   position: relative;
 }
 
-// Navbar
+// NAVBAR
 nav.starbucks-nav {
-  margin-top: 1rem;
-  margin-inline: auto;
-  width: 95%;
-  @media screen and (min-width: 1024px) {
-    width: 80%;
-  }
+  @include starbucksContainer();
+  padding-top: 1rem;
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -45,6 +49,148 @@ nav.starbucks-nav {
           color: green;
         }
       }
+    }
+  }
+}
+
+main#starbucks-banner {
+  display: grid;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+// Banner
+main#starbucks-banner > section.starbucks-hero {
+  @include starbucksContainer();
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  div {
+    &:first-child {
+      h2 {
+        color: #333;
+        font-size: 4rem;
+        line-height: 5rem;
+        font-weight: 500;
+        span {
+          color: #00704a;
+          font-weight: 900;
+        }
+      }
+      p {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.75rem;
+        font-weight: 400;
+        margin-top: 1.5rem;
+      }
+    }
+    &:last-child {
+      img {
+        height: auto;
+      }
+    }
+  }
+}
+
+// HERO BANNER
+@mixin starbuckSvgBasicStyle() {
+  background-color: #00704a;
+  border-radius: 50%;
+  stroke: white;
+  width: 50px;
+  height: 50px;
+  path {
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+}
+
+@mixin learnMoreSpanStyle() {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #00704a;
+  left: 60px;
+  font-weight: 700;
+}
+
+@mixin starbuckSvgStyleHoverIn {
+  transition: all 0.5s ease-in-out;
+  width: 200px;
+  border-radius: 6rem;
+  path {
+    d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+}
+
+@mixin starbuckLearnMoreSpanStyleHoverIn() {
+  transition: color 0.5s ease-in-out;
+  transition-delay: 200ms;
+  left: 75px;
+  color: white;
+}
+
+@mixin starbuckSvgStyleHoverOut {
+  transition: all 0.5s ease-in-out;
+  transition-delay: 200ms;
+  width: 50px;
+  border-radius: 50%;
+  path {
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+}
+
+@mixin starbuckLearnMoreSpanStyleHoverOut() {
+  transition: all 0.5s ease-in-out;
+  transition-delay: 100ms;
+  position: absolute;
+  color: #00704a;
+  left: 60px;
+  font-weight: 700;
+}
+
+a.learn-more {
+  margin-top: 1rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+
+  &:has(span.learn-more:hover) {
+    svg {
+      @include starbuckSvgStyleHoverIn();
+    }
+  }
+
+  &:has(svg:hover) {
+    span {
+      @include starbuckLearnMoreSpanStyleHoverIn();
+    }
+  }
+
+  svg {
+    @include starbuckSvgBasicStyle();
+    &:hover {
+      @include starbuckSvgStyleHoverIn();
+    }
+    &:not(:hover) {
+      @include starbuckSvgStyleHoverOut();
+    }
+  }
+
+  span {
+    @include learnMoreSpanStyle();
+    &:hover {
+      @include starbuckLearnMoreSpanStyleHoverIn();
+    }
+    &:not(:hover) {
+      @include starbuckLearnMoreSpanStyleHoverOut();
     }
   }
 }
