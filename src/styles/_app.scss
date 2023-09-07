@@ -60,6 +60,7 @@ nav.app-nav {
   z-index: 2;
   background-color: var(--navColor, purple);
   display: none;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
   width: 50%;
   height: 100%;
   justify-content: end;

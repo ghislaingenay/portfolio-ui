@@ -16,7 +16,8 @@
     "paths": {
       "@interface": ["./src/global.interface"],
       "@jp-mock/*": ["./src/lib/jp-language/*"],
-      "@home/*": ["./src/lib/home/*"]
+      "@home/*": ["./src/lib/home/*"],
+      "@starbucks/*": ["./src/lib/starbucks/*"]
     },
     "jsx": "react-jsx",
     "allowJs": false,
