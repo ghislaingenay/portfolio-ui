@@ -11,14 +11,75 @@ import StarbucksDrinkOneSmall from '@starbucks/assets/thumb1.png';
 import StarbucksDrinkTwoSmall from '@starbucks/assets/thumb2.png';
 import StarbucksDrinkThreeSmall from '@starbucks/assets/thumb3.png';
 
+interface StarbucksImgDict {
+  imgUrl: string;
+  color: string;
+}
+
 export default function StarbucksMockUp() {
-  // const getSVGElement = () =>
-  //   document.querySelector('a.learn-more svg') as HTMLElement;
-  // const getLearnMoreText = () =>
-  //   document.querySelector('span.learn-more') as HTMLSpanElement;
+  const imgDictionary: StarbucksImgDict[] = [
+    { imgUrl: StarbucksDrinkOne, color: '#f7f7f7' },
+    { imgUrl: StarbucksDrinkTwo, color: '#f7f7f7' },
+    { imgUrl: StarbucksDrinkThree, color: '#f7f7f7' },
+  ];
+
+  // Fix animation display error for learn more button
+  useEffect(() => {
+    const aElement = document.querySelector(
+      'a.learn-more'
+    ) as HTMLAnchorElement;
+    aElement.style.opacity = '0';
+    const timeout = setTimeout(() => {
+      aElement.style.opacity = '1';
+    }, 200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // function changeCircleColor(color: string) {
+  //   const circle = document.querySelector(
+  //     'div.starbucks-circle'
+  //   ) as HTMLDivElement;
+  //   circle.style.backgroundColor = color;
+  // }
+
+  // function switchImageDrink(link: string) {
+  //   const img = document.querySelector(
+  //     'section.starbucks-hero div:last-child img'
+  //   ) as HTMLImageElement;
+  //   img.src = link;
+  // }
+
+  // const removeListeners = (liElements: NodeListOf<HTMLLIElement>) => {
+  //   return liElements.forEach((li, index) => {
+  //     li.removeEventListener('click', (e) => {
+  //       const { imgUrl, color } = imgDictionary[index];
+  //       switchImageDrink(imgUrl);
+  //       changeCircleColor(color);
+  //     });
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   const ulThumbs = document.querySelector(
+  //     'ul.starbucks-thumbs'
+  //   ) as HTMLUListElement;
+  //   const liThumbs = ulThumbs.querySelectorAll(
+  //     'li'
+  //   ) as NodeListOf<HTMLLIElement>;
+  //   liThumbs.forEach((li, index) => {
+  //     li.addEventListener('click', (e) => {
+  //       const { imgUrl, color } = imgDictionary[index];
+  //       switchImageDrink(imgUrl);
+  //       changeCircleColor(color);
+  //     });
+  //   });
+  //   return () => removeListeners(liThumbs);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div id="starbucks" className="font-poppins">
+      {/* <div className="starbucks-circle" /> */}
       <nav className="starbucks-nav">
         <a href="#" className="starbucks-logo">
           <img
@@ -66,8 +127,37 @@ export default function StarbucksMockUp() {
             <img src={StarbucksDrinkOne} alt="Starbucks Drink" />
           </div>
         </section>
-        <section></section>
+        {/* <ul className="starbucks-thumbs">
+          <li>
+            <img src={StarbucksDrinkOneSmall} alt="Starbucks drink 1" />
+          </li>
+          <li>
+            <img src={StarbucksDrinkTwoSmall} alt="Starbucks drink 2" />
+          </li>
+          <li>
+            <img src={StarbucksDrinkThreeSmall} alt="Starbucks drink 3" />
+          </li>
+        </ul> */}
       </main>
+      {/* <footer className="starbucks-social">
+        <ul>
+          <li>
+            <a href="#">
+              <img src={Facebook} alt="Facebook Icon" />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={X} alt="X icon" />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={Instagram} alt="Instagram icon" />
+            </a>
+          </li>
+        </ul>
+      </footer> */}
     </div>
   );
 }
