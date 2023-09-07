@@ -1,0 +1,85 @@
+// Set the position in place
+
+$extraSmallSize: 100px;
+$smallSize: 200px;
+$medium: 300px;
+$large: 400px;
+$extraLarge: 600px;
+
+@mixin circle($pixels) {
+  width: $pixels;
+  height: $pixels;
+  border-radius: 50%;
+}
+
+@mixin alignTopLeft($pixels) {
+  top: calc(#{$pixels} / 2 - #{$pixels});
+  left: calc(#{$pixels} / 2 - #{$pixels});
+}
+
+@keyframes rightToLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes topToBottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Set the position and display of all elements
+div#app {
+  position: relative;
+  div#hover-nav {
+    position: absolute;
+  }
+  nav.app-nav {
+    position: absolute;
+  }
+}
+
+div#hover-nav {
+  width: 100px;
+  background-color: var(--navColor, purple);
+  z-index: 1;
+  height: 150px;
+  @include alignTopLeft($extraSmallSize);
+  transform: skewX(-30deg) rotate(-30deg);
+  border-radius: 50%;
+}
+
+nav.app-nav {
+  z-index: 2;
+  background-color: var(--navColor, purple);
+  display: none;
+  width: 50%;
+  height: 100%;
+  justify-content: end;
+  padding: 2rem;
+  animation: rightToLeft 1s ease-in-out normal;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    min-height: 50%;
+    animation: topToBottom 1s ease-in-out;
+  }
+  box-sizing: border-box;
+  svg {
+    width: var(--svg-app-nav, 200px);
+    height: var(--svg-app-nav, 200px);
+    stroke: black;
+    stroke-width: 10px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    path {
+      stroke-linecap: round;
+    }
+  }
+}
