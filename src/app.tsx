@@ -6,7 +6,7 @@ import './styles.scss';
 // import ProjectPage from '@home/ProjectPage';
 // import MainNav from '@home/MainNav';
 // import StarbucksMockUp from '@starbucks/StarbucksMockUp';
-import { RevealCards } from '@animations';
+import { Confetti } from '@animations';
 
 export function App() {
   // const choseProject = (key: string) => {
@@ -32,7 +32,7 @@ export function App() {
     <div id="app">
       {/* <MainNav />
       <StarbucksMockUp /> */}
-      <RevealCards />
+      <Confetti />
     </div>
   );
 }
