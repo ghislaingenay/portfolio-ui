@@ -1,11 +1,20 @@
+$confettiBg: rgb(28, 9, 50);
+
 main#confetti {
-  // background-color: black;
+  &:before {
+    content: '';
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+  }
+  background-color: $confettiBg;
   z-index: -500;
   button {
     position: relative;
     place-self: center;
     padding: 0.5rem 2rem;
-    background: linear-gradient(#fff, #fff) padding-box,
+    background: linear-gradient($confettiBg, $confettiBg) padding-box,
       linear-gradient(45deg, purple, orange) border-box;
     border: 5px solid transparent;
     border-radius: 50px;
@@ -40,3 +49,6 @@ main#confetti {
     }
   }
 }
+
+// main#confetti button span {
+// }
