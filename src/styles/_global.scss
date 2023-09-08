@@ -28,6 +28,14 @@
   display: block;
 }
 
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
 // TEXT
 .bold {
   font-weight: 700;
@@ -37,6 +45,10 @@
 // FONT
 .font-montserrat {
   font-family: 'Montserrat Regular', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
 }
 
 // POSITION

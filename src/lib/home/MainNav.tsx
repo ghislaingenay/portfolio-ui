@@ -1,6 +1,6 @@
 // import { useEffect } from 'react';
 
-import { DivProps, Routing } from '@interface';
+import { Routing } from '@interface';
 import { useEffect } from 'react';
 
 type MainNavProps = {

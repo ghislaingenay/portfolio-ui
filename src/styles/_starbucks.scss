@@ -1,0 +1,309 @@
+@mixin starbucksContainer() {
+  width: 95%;
+  @media screen and (min-width: 1024px) {
+    width: 80%;
+  }
+  margin-inline: auto;
+}
+
+div#starbucks {
+  height: 100vh;
+}
+
+$starbucksGreenColor: #00704a;
+// WRAPPER
+section#starbucks {
+  width: 100%;
+  padding-inline: 1rem;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+// CIRCLE
+div.starbucks-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $starbucksGreenColor;
+  clip-path: circle(600px at right 800px);
+  z-index: -1;
+  // clip-path: (600px at 0% 0%); // 600px at center  // 600px at right 800px
+}
+
+// NAVBAR
+nav.starbucks-nav {
+  @include starbucksContainer();
+  padding-top: 1rem;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // Link containing the logo
+  a {
+    max-width: 80px;
+  }
+  ul {
+    display: flex;
+    justify-content: end;
+    gap: 1.5rem;
+    width: 70%;
+    @media screen and (min-width: 1024px) {
+      width: 50%;
+    }
+    li {
+      padding: 0.25rem;
+      &:last-child {
+        padding-right: 0;
+      }
+      a {
+        font-size: 1rem;
+        // font-weight: 500;
+        &:hover {
+          color: green;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+main#starbucks-banner {
+  display: grid;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+// Banner
+main#starbucks-banner > section.starbucks-hero {
+  @include starbucksContainer();
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  div {
+    &:first-child {
+      h2 {
+        color: #333;
+        font-size: 4rem;
+        line-height: 5rem;
+        font-weight: 500;
+        span {
+          color: $starbucksGreenColor;
+          font-weight: 900;
+        }
+      }
+      p {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.75rem;
+        font-weight: 400;
+        margin-top: 1.5rem;
+      }
+    }
+    &:last-child {
+      width: 600px;
+      display: flex;
+      justify-content: end;
+      padding-right: 50px;
+      margin-top: 50px;
+      img {
+        height: auto;
+      }
+    }
+  }
+}
+
+// HERO BANNER
+@mixin starbuckSvgBasicStyle() {
+  background-color: $starbucksGreenColor;
+  border-radius: 50%;
+  stroke: white;
+  width: 50px;
+  height: 50px;
+  path {
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+}
+
+@mixin starbuckSvgStyleHoverIn {
+  transition: all 0.5s ease-in-out;
+  width: 200px;
+  border-radius: 6rem;
+  path {
+    animation: pathAnimationOpen 1s ease-in;
+    d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+}
+
+@mixin starbuckSvgStyleHoverOut {
+  transition: all 0.5s ease-in-out;
+  transition-delay: 200ms;
+  width: 50px;
+  border-radius: 50%;
+  path {
+    animation: pathAnimationClose 1s ease-in-out;
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+}
+
+@mixin learnMoreSpanStyle() {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.6);
+  // color: var(--starbucks-span, $starbucksGreenColor);
+  left: 60px;
+  font-weight: 700;
+  mix-blend-mode: screen;
+}
+@mixin starbuckLearnMoreSpanStyleHoverIn() {
+  transition: color 0.5s ease-in-out;
+  transition-delay: 200ms;
+  left: 75px;
+  color: white;
+}
+@mixin starbuckLearnMoreSpanStyleHoverOut() {
+  transition: all 0.5s ease-in-out;
+  transition-delay: 100ms;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.6);
+  // color: var(--starbucks-span, $starbucksGreenColor);
+  left: 60px;
+  font-weight: 700;
+}
+
+@keyframes pathAnimationOpen {
+  0% {
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+  30% {
+    d: path('M40,25 L40,25 M15,10 L40,25 M15,40 40,25');
+  }
+  40% {
+    d: path('M15,25 L40,25 M15,10 L40,25 M15,40 40,25');
+  }
+  50% {
+    d: path('M30,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+  100% {
+    d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+}
+
+@keyframes pathAnimationClose {
+  0% {
+    d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+  30% {
+    d: path('M30,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  }
+  40% {
+    d: path('M15,25 L40,25 M15,10 L40,25 M15,40 40,25');
+  }
+  50% {
+    d: path('M40,25 L40,25 M15,10 L40,25 M15,40 40,25');
+  }
+  100% {
+    d: path('M15,10 L40,25 M15,40 40,25');
+  }
+}
+
+a.learn-more {
+  margin-top: 1rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+
+  &:has(span.learn-more:hover) {
+    svg {
+      @include starbuckSvgStyleHoverIn();
+    }
+  }
+
+  &:has(svg:hover) {
+    span {
+      @include starbuckLearnMoreSpanStyleHoverIn();
+    }
+  }
+
+  svg {
+    @include starbuckSvgBasicStyle();
+    &:hover {
+      @include starbuckSvgStyleHoverIn();
+    }
+    &:not(:hover) {
+      @include starbuckSvgStyleHoverOut();
+    }
+  }
+
+  span {
+    @include learnMoreSpanStyle();
+    &:hover {
+      @include starbuckLearnMoreSpanStyleHoverIn();
+    }
+    &:not(:hover) {
+      @include starbuckLearnMoreSpanStyleHoverOut();
+    }
+  }
+}
+
+// Thumbs
+main#starbucks-banner > ul.starbucks-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  li {
+    &:before {
+      content: '';
+      width: 100%;
+      background-color: $starbucksGreenColor;
+      margin-top: 0.5rem;
+    }
+    &:hover {
+      transition: all 0.5s ease-in-out;
+      transform: scale(1.1) translateY(-10px);
+    }
+    &:not(:hover) {
+      transition: all 0.5s ease-in-out;
+      transform: scale(1) translateY(0);
+    }
+    img {
+      max-width: 60px;
+    }
+  }
+}
+
+// SOCIAL NETWORK
+footer.starbucks-social ul {
+  position: absolute;
+  top: 50%;
+  right: calc(10%);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  li {
+    a img {
+      width: 30px;
+      filter: invert(100%);
+      // color: white;
+    }
+    &:first-child {
+      a img {
+        width: 18px;
+      }
+    }
+  }
+}

@@ -27,7 +27,12 @@ ol[role='list'] {
   li {
     padding: 0;
     margin: 0;
+    list-style: none;
   }
+}
+
+li {
+  list-style: none;
 }
 
 /* Set core root defaults */
@@ -45,6 +50,12 @@ body {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+/* Remove underline elements in link */
+a {
+  text-decoration: none;
+  color: black;
 }
 
 /* Make images easier to work with */

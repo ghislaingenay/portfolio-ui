@@ -8,7 +8,15 @@
 
 // Mock ups
 @use './styles/jp-mock';
+@use './styles/_starbucks';
 
+// animations
+@use './styles/animations/revealcards';
+@use './styles/animations/confetti';
+
+// Good website for UI
+// https://svg-path-visualizer.netlify.app/#M2%2C8%20L5%2C2%20L8%2C8
+// https://css-tricks.com/svg-path-syntax-illustrated-guide/
 // GLOBAL STYLES
 .container {
   max-width: 1280px;
