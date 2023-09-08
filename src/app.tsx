@@ -6,6 +6,8 @@ import './styles.scss';
 // import ProjectPage from '@home/ProjectPage';
 import MainNav from '@home/MainNav';
 import StarbucksMockUp from '@starbucks/StarbucksMockUp';
+import { AnimationPlaceHolder } from './lib/animations/AnimationPlaceHolder';
+import { RevealCards } from './lib/animations/RevealCards';
 
 export function App() {
   // const choseProject = (key: string) => {
@@ -29,8 +31,11 @@ export function App() {
 
   return (
     <div id="app">
-      <MainNav />
-      <StarbucksMockUp />
+      {/* <MainNav />
+      <StarbucksMockUp /> */}
+      <AnimationPlaceHolder>
+        <RevealCards />
+      </AnimationPlaceHolder>
     </div>
   );
 }

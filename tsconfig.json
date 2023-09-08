@@ -17,7 +17,8 @@
       "@interface": ["./src/global.interface"],
       "@jp-mock/*": ["./src/lib/jp-language/*"],
       "@home/*": ["./src/lib/home/*"],
-      "@starbucks/*": ["./src/lib/starbucks/*"]
+      "@starbucks/*": ["./src/lib/starbucks/*"],
+      "@animations": ["./src/lib/animations/index"]
     },
     "jsx": "react-jsx",
     "allowJs": false,
