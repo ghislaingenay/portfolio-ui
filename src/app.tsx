@@ -4,10 +4,9 @@ import './styles.scss';
 // import { JPMockUp } from '@jp-mock/JPLanguage';
 // import { Routing } from '@interface';
 // import ProjectPage from '@home/ProjectPage';
-import MainNav from '@home/MainNav';
-import StarbucksMockUp from '@starbucks/StarbucksMockUp';
-import { AnimationPlaceHolder } from './lib/animations/AnimationPlaceHolder';
-import { RevealCards } from './lib/animations/RevealCards';
+// import MainNav from '@home/MainNav';
+// import StarbucksMockUp from '@starbucks/StarbucksMockUp';
+import { RevealCards } from '@animations';
 
 export function App() {
   // const choseProject = (key: string) => {
@@ -33,9 +32,7 @@ export function App() {
     <div id="app">
       {/* <MainNav />
       <StarbucksMockUp /> */}
-      <AnimationPlaceHolder>
-        <RevealCards />
-      </AnimationPlaceHolder>
+      <RevealCards />
     </div>
   );
 }
