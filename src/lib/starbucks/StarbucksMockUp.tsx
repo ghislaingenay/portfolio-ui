@@ -18,9 +18,9 @@ interface StarbucksImgDict {
 
 export default function StarbucksMockUp() {
   const imgDictionary: StarbucksImgDict[] = [
-    { imgUrl: StarbucksDrinkOne, color: '#f7f7f7' },
-    { imgUrl: StarbucksDrinkTwo, color: '#f7f7f7' },
-    { imgUrl: StarbucksDrinkThree, color: '#f7f7f7' },
+    { imgUrl: StarbucksDrinkOne, color: '#00704a' },
+    { imgUrl: StarbucksDrinkTwo, color: '#ffc0cb ' },
+    { imgUrl: StarbucksDrinkThree, color: '#fc0fc0' },
   ];
 
   // Fix animation display error for learn more button
@@ -35,51 +35,62 @@ export default function StarbucksMockUp() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // function changeCircleColor(color: string) {
-  //   const circle = document.querySelector(
-  //     'div.starbucks-circle'
-  //   ) as HTMLDivElement;
-  //   circle.style.backgroundColor = color;
-  // }
+  function changeCircleColor(color: string) {
+    const circle = document.querySelector(
+      'div.starbucks-circle'
+    ) as HTMLDivElement;
+    circle.style.backgroundColor = color;
+  }
 
-  // function switchImageDrink(link: string) {
-  //   const img = document.querySelector(
-  //     'section.starbucks-hero div:last-child img'
-  //   ) as HTMLImageElement;
-  //   img.src = link;
-  // }
+  function switchImageDrink(link: string) {
+    const img = document.querySelector(
+      'section.starbucks-hero div:last-child img'
+    ) as HTMLImageElement;
+    img.src = link;
+  }
 
-  // const removeListeners = (liElements: NodeListOf<HTMLLIElement>) => {
-  //   return liElements.forEach((li, index) => {
-  //     li.removeEventListener('click', (e) => {
-  //       const { imgUrl, color } = imgDictionary[index];
-  //       switchImageDrink(imgUrl);
-  //       changeCircleColor(color);
-  //     });
-  //   });
-  // };
+  const switchLearnMoreColor = (color: string) => {
+    // const getSpanLearnMore = () =>
+    //   document.querySelector('span.learn-more') as HTMLSpanElement;
+    const getSvgElement = () =>
+      document.querySelector('a.learn-more svg') as SVGSVGElement;
+    // getSpanLearnMore().style.setProperty('--starbucks-span', color)
+    getSvgElement().style.backgroundColor = color;
+  };
 
-  // useEffect(() => {
-  //   const ulThumbs = document.querySelector(
-  //     'ul.starbucks-thumbs'
-  //   ) as HTMLUListElement;
-  //   const liThumbs = ulThumbs.querySelectorAll(
-  //     'li'
-  //   ) as NodeListOf<HTMLLIElement>;
-  //   liThumbs.forEach((li, index) => {
-  //     li.addEventListener('click', (e) => {
-  //       const { imgUrl, color } = imgDictionary[index];
-  //       switchImageDrink(imgUrl);
-  //       changeCircleColor(color);
-  //     });
-  //   });
-  //   return () => removeListeners(liThumbs);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const removeListeners = (liElements: NodeListOf<HTMLLIElement>) => {
+    return liElements.forEach((li, index) => {
+      li.removeEventListener('click', (e) => {
+        const { imgUrl, color } = imgDictionary[index];
+        switchImageDrink(imgUrl);
+        changeCircleColor(color);
+        switchLearnMoreColor(color);
+      });
+    });
+  };
+
+  useEffect(() => {
+    const ulThumbs = document.querySelector(
+      'ul.starbucks-thumbs'
+    ) as HTMLUListElement;
+    const liThumbs = ulThumbs.querySelectorAll(
+      'li'
+    ) as NodeListOf<HTMLLIElement>;
+    liThumbs.forEach((li, index) => {
+      li.addEventListener('click', (e) => {
+        const { imgUrl, color } = imgDictionary[index];
+        switchImageDrink(imgUrl);
+        changeCircleColor(color);
+        switchLearnMoreColor(color);
+      });
+    });
+    return () => removeListeners(liThumbs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div id="starbucks" className="font-poppins">
-      {/* <div className="starbucks-circle" /> */}
+      <div className="starbucks-circle" />
       <nav className="starbucks-nav">
         <a href="#" className="starbucks-logo">
           <img
@@ -127,7 +138,7 @@ export default function StarbucksMockUp() {
             <img src={StarbucksDrinkOne} alt="Starbucks Drink" />
           </div>
         </section>
-        {/* <ul className="starbucks-thumbs">
+        <ul className="starbucks-thumbs">
           <li>
             <img src={StarbucksDrinkOneSmall} alt="Starbucks drink 1" />
           </li>
@@ -137,9 +148,9 @@ export default function StarbucksMockUp() {
           <li>
             <img src={StarbucksDrinkThreeSmall} alt="Starbucks drink 3" />
           </li>
-        </ul> */}
+        </ul>
       </main>
-      {/* <footer className="starbucks-social">
+      <footer className="starbucks-social">
         <ul>
           <li>
             <a href="#">
@@ -157,7 +168,7 @@ export default function StarbucksMockUp() {
             </a>
           </li>
         </ul>
-      </footer> */}
+      </footer>
     </div>
   );
 }

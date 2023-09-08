@@ -6,6 +6,10 @@
   margin-inline: auto;
 }
 
+div#starbucks {
+  height: 100vh;
+}
+
 $starbucksGreenColor: #00704a;
 // WRAPPER
 section#starbucks {
@@ -26,7 +30,9 @@ div.starbucks-circle {
   width: 100%;
   height: 100%;
   background: $starbucksGreenColor;
-  clip-path: (600px at 0% 0%); // 600px at center  // 600px at right 800px
+  clip-path: circle(600px at right 800px);
+  z-index: -1;
+  // clip-path: (600px at 0% 0%); // 600px at center  // 600px at right 800px
 }
 
 // NAVBAR
@@ -59,6 +65,7 @@ nav.starbucks-nav {
         // font-weight: 500;
         &:hover {
           color: green;
+          font-weight: 500;
         }
       }
     }
@@ -99,11 +106,11 @@ main#starbucks-banner > section.starbucks-hero {
       }
     }
     &:last-child {
-      // width: 600px;
-      // display: flex;
-      // justify-content: end;
-      // padding-right: 50px;
-      // margin-top: 50px;
+      width: 600px;
+      display: flex;
+      justify-content: end;
+      padding-right: 50px;
+      margin-top: 50px;
       img {
         height: auto;
       }
@@ -126,16 +133,6 @@ main#starbucks-banner > section.starbucks-hero {
   }
 }
 
-@mixin learnMoreSpanStyle() {
-  transition: all 0.5s ease-in-out;
-  position: absolute;
-  padding: 0.5rem 0;
-  font-size: 1.1rem;
-  color: $starbucksGreenColor;
-  left: 60px;
-  font-weight: 700;
-}
-
 @mixin starbuckSvgStyleHoverIn {
   transition: all 0.5s ease-in-out;
   width: 200px;
@@ -144,13 +141,6 @@ main#starbucks-banner > section.starbucks-hero {
     animation: pathAnimationOpen 1s ease-in;
     d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
   }
-}
-
-@mixin starbuckLearnMoreSpanStyleHoverIn() {
-  transition: color 0.5s ease-in-out;
-  transition-delay: 200ms;
-  left: 75px;
-  color: white;
 }
 
 @mixin starbuckSvgStyleHoverOut {
@@ -164,11 +154,29 @@ main#starbucks-banner > section.starbucks-hero {
   }
 }
 
+@mixin learnMoreSpanStyle() {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.6);
+  // color: var(--starbucks-span, $starbucksGreenColor);
+  left: 60px;
+  font-weight: 700;
+  mix-blend-mode: screen;
+}
+@mixin starbuckLearnMoreSpanStyleHoverIn() {
+  transition: color 0.5s ease-in-out;
+  transition-delay: 200ms;
+  left: 75px;
+  color: white;
+}
 @mixin starbuckLearnMoreSpanStyleHoverOut() {
   transition: all 0.5s ease-in-out;
   transition-delay: 100ms;
   position: absolute;
-  color: $starbucksGreenColor;
+  color: rgba(0, 0, 0, 0.6);
+  // color: var(--starbucks-span, $starbucksGreenColor);
   left: 60px;
   font-weight: 700;
 }
@@ -252,55 +260,49 @@ a.learn-more {
 
 // Thumbs
 main#starbucks-banner > ul.starbucks-thumbs {
-  // position: absolute;
-  // left: 50%;
-  // bottom: 20px;
-  // transform: translateX(-50%);
   display: flex;
+  justify-content: center;
+  gap: 2rem;
   li {
-    transition: 0.5s;
-    list-style: none;
-    display: inline-block;
-    img {
-      max-width: 60px;
+    &:before {
+      content: '';
+      width: 100%;
+      background-color: $starbucksGreenColor;
+      margin-top: 0.5rem;
     }
     &:hover {
+      transition: all 0.5s ease-in-out;
       transform: scale(1.1) translateY(-10px);
+    }
+    &:not(:hover) {
+      transition: all 0.5s ease-in-out;
+      transform: scale(1) translateY(0);
+    }
+    img {
+      max-width: 60px;
     }
   }
 }
 
-// Social network
+// SOCIAL NETWORK
 footer.starbucks-social ul {
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: calc(10%);
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
   li {
-    filter: grayscale(100%);
-    // facebook
-    a {
-      margin: 5px 0;
+    a img {
+      width: 30px;
+      filter: invert(100%);
+      // color: white;
     }
     &:first-child {
       a img {
-        width: 100%;
-      }
-    }
-    // X
-    &:nth-child(2) {
-      a img {
-        width: 100%;
-      }
-    }
-    // IG
-    &:last-child {
-      a img {
-        width: 100%;
+        width: 18px;
       }
     }
   }
