@@ -14,10 +14,9 @@ export const RevealCards = () => {
   const scrollTrigger = () => {
     const boxes = getBoxes();
     boxes.forEach((box) => {
-      const boxTop = box.offsetTop;
+      const { offsetTop } = box;
       const { scrollY } = window;
-      console.log('scrollY', window.scrollY);
-      if (boxTop < scrollY) box.classList.add('show-reveal-box');
+      if (offsetTop < scrollY) box.classList.add('show-reveal-box');
       else box.classList.remove('show-reveal-box');
     });
   };
@@ -27,7 +26,7 @@ export const RevealCards = () => {
       [...Array(60).fill(0)].forEach((_, i) => {
         // eslint-disable-next-line prefer-const
         let box = document.createElement('div');
-        box.innerHTML = `<div><h1>${i}</h1></div>`;
+        box.innerHTML = `<div><h2>${i}</h2></div>`;
         box.style.backgroundColor = generateRandomColor();
         box.classList.add('reveal-box');
         const boxDiv = getRevealBoxesDiv();
@@ -42,6 +41,21 @@ export const RevealCards = () => {
     return () => window.removeEventListener('scroll', scrollTrigger);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Generate color text
+  useEffect(() => {
+    const h1ElementText = document.querySelector(
+      'div.reveal-scroll h1'
+    ) as HTMLHeadingElement;
+    h1ElementText.innerHTML = h1ElementText.innerText
+      .split('')
+      .map((letter, i) => {
+        return `<span style="transition-delay:${i * 40}ms; filter: hue-rotate(${
+          i * 10
+        }deg);">${letter}</span>`;
+      })
+      .join('');
+  });
 
   return (
     <div id="reveal-cards">
