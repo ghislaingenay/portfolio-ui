@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
-import { useAuto } from '../useAuto';
 
 export const Confetti = () => {
-  const [data, updateParams, helpers] = useAuto();
   useEffect(() => {
     const confettiContainer = document.querySelector(
       'span.confetti'
