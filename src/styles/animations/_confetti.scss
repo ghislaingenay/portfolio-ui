@@ -1,21 +1,40 @@
 $confettiBg: rgb(28, 9, 50);
 
+@mixin skyImageStyle() {
+  position: absolute;
+  background-image: url('./lib/animations/assets/skynight.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  height: 100%;
+  width: 100%;
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+
 main#confetti {
+  padding: 0;
+  overflow: hidden;
+
+  perspective: 1000px;
   &:before {
     content: '';
-    position: absolute;
-
-    height: 100%;
-    width: 100%;
+    @include skyImageStyle();
   }
   background-color: $confettiBg;
   z-index: -500;
   button {
+    transform-style: preserve-3d;
+    cursor: pointer;
     position: relative;
     place-self: center;
     padding: 0.5rem 2rem;
     background: linear-gradient($confettiBg, $confettiBg) padding-box,
       linear-gradient(45deg, purple, orange) border-box;
+    // background: linear-gradient(purple, orange) padding-box,
+    //   linear-gradient(45deg, purple, orange) border-box;
     border: 5px solid transparent;
     border-radius: 50px;
     transition: all 1s;
@@ -42,6 +61,7 @@ main#confetti {
       &:before {
         width: 300px;
         transition-delay: 200ms;
+        transition: transform 200ms; // able to chnage the speed of the aniamtion by adding this properties
         transform: translate(-50%, -50%);
       }
       border-color: purple;
@@ -50,5 +70,33 @@ main#confetti {
   }
 }
 
-// main#confetti button span {
-// }
+// span containing the confettis
+.confetti {
+  position: absolute;
+  // background: yellow;
+  // width: 10px;
+  // height: 10px;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  // span {
+  //   position: absolute;
+  //   width: 25px;
+  //   aspect-ratio: 1;
+  //   background: orangered;
+  // }
+}
+
+.confetti-explosion {
+  animation: confettiSpread 10s;
+}
+
+@keyframes confettiSpread {
+  25% {
+    translate: 0, -25vh;
+  }
+  100% {
+    translate: 0, -25vh;
+  }
+}
