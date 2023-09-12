@@ -157,15 +157,3 @@ main#confetti {
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
-
-// Things to fo with :before and ::after
-
-// 1 - Add elements to the background
-// .intro {
-//   &:before {
-//     content: url() // Can add a logo there
-//     content: open-quote // can add open and close quotes (:before / :after)
-//     ..... others styles that can be added to style the content
-
-//   }
-// }

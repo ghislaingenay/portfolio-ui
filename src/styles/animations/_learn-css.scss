@@ -1,0 +1,47 @@
+// Things to fo with :before and ::after
+
+// 1 - Add elements to the background
+// .intro {
+//   &:before {
+//     content: url() // Can add a logo there
+//     content: open-quote and close-quote // can add open and close quotes (:before / :after)
+//     content: attr()
+//     ..... others styles that can be added to style the content
+
+//   }
+// }
+
+// Adding logo
+a[href$='.pdf'] {
+  &::after {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f1c1';
+  }
+}
+a[href^='http'] {
+  &::after {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f35d';
+    font-weight: 900;
+    font-size: 0.8rem;
+  }
+}
+
+// Add counters
+// .counters {
+//   background: lightgray;
+//   text-align: left;
+//   padding: 5em 8em;
+//   margin-top: 7em;
+//   counter-reset: counter-name;
+// }
+
+.section::before {
+  counter-increment: counter-name;
+  content: counter(counter-name) ' ';
+  margin-right: 1em;
+  position: relative;
+  left: -2.5rem;
+  background: white;
+  padding: 0.5em;
+}
