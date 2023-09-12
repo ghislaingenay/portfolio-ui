@@ -182,9 +182,7 @@ main#starbucks-banner > section.starbucks-hero {
 }
 
 @keyframes pathAnimationOpen {
-  0% {
-    d: path('M15,10 L40,25 M15,40 40,25');
-  }
+  // don't need 0 because it will directly take the initial value as 0
   30% {
     d: path('M40,25 L40,25 M15,10 L40,25 M15,40 40,25');
   }
@@ -194,9 +192,10 @@ main#starbucks-banner > section.starbucks-hero {
   50% {
     d: path('M30,25 L60,25 M35,10 L60,25 M35,40 L60,25');
   }
-  100% {
-    d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
-  }
+
+  // 100% {
+  //   d: path('M15,25 L60,25 M35,10 L60,25 M35,40 L60,25');
+  // }
 }
 
 @keyframes pathAnimationClose {

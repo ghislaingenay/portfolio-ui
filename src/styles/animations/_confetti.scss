@@ -1,18 +1,61 @@
+$confettiBg: rgb(28, 9, 50);
+
+@mixin skyImageStyle() {
+  position: absolute;
+  background-image: url('./lib/animations/assets/skynight.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  height: 100%;
+  width: 100%;
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+
 main#confetti {
-  // background-color: black;
+  display: grid;
+  gap: 5rem;
+  padding-bottom: 2rem;
+  overflow: hidden;
+  section {
+    color: white;
+    padding-block: 5rem;
+    font-family: Poppins, sans-serif;
+    height: fit-content;
+    h2,
+    p {
+      margin-block: 1rem;
+      width: 80%;
+      margin-inline: auto;
+    }
+  }
+
+  perspective: 1000px;
+  &:before {
+    content: '';
+    @include skyImageStyle();
+  }
+  background-color: $confettiBg;
   z-index: -500;
   button {
+    margin-block: 2rem;
+    transform-style: preserve-3d;
+    cursor: pointer;
     position: relative;
     place-self: center;
     padding: 0.5rem 2rem;
-    background: linear-gradient(#fff, #fff) padding-box,
+    background: linear-gradient($confettiBg, $confettiBg) padding-box,
       linear-gradient(45deg, purple, orange) border-box;
+    // background: linear-gradient(purple, orange) padding-box,
+    //   linear-gradient(45deg, purple, orange) border-box;
     border: 5px solid transparent;
     border-radius: 50px;
     transition: all 1s;
     overflow: hidden;
     color: purple;
-    z-index: 1;
+
     h1 {
       font-size: 2rem;
     }
@@ -33,6 +76,7 @@ main#confetti {
       &:before {
         width: 300px;
         transition-delay: 200ms;
+        transition: transform 200ms; // able to chnage the speed of the aniamtion by adding this properties
         transform: translate(-50%, -50%);
       }
       border-color: purple;
@@ -40,3 +84,88 @@ main#confetti {
     }
   }
 }
+
+// If this section was inside something else with a background => can have issue
+.diagonal {
+  --skew-angle: -5deg;
+  --diagonal-color: linear-gradient(
+    45deg,
+    #12c2e9 10%,
+    #c471ed 50%,
+    #f64f59 100%
+  );
+  position: relative;
+  isolation: isolate; // The z-index of -1 had to stay within diagonal and not regarding other sections
+  &:after {
+    content: '';
+    background-color: steelblue;
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    transform: skewY(var(--skew-angle));
+
+    background: var(--diagonal-color);
+  }
+}
+
+@mixin maskChrome($spikeWidth, $spikeHeight) {
+  -webkit-mask-image: url('./lib/animations/assets/spike.svg');
+  -webkit-mask-size: $spikeHeight $spikeHeight; // width and height
+  mask-size: $spikeWidth $spikeHeight; // width and height
+  mask-image: url('./lib/animations/assets/spike.svg');
+  mask-repeat: repeat-x;
+}
+
+// https://github.com/kevin-powell/creative-section-shapes
+
+.spike {
+  --spike-height: 20px;
+  --spike-width: 60px;
+  position: relative;
+  background: linear-gradient(to right, #f5af19, #f12711);
+  // global style before and after
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: var(--spike-height);
+    background: $confettiBg;
+    @include maskChrome(var(--spike-width), var(--spike-height));
+  }
+  // before
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+    transform: rotate(0.5turn);
+  }
+}
+
+// https://css-generators.com/wavy-shapes/
+.wavy {
+  background: linear-gradient(to right, #00f260, #0575e6);
+  --mask: radial-gradient(29.73px at 50% 42px, #000 99%, #0000 101%)
+      calc(50% - 40px) 0/80px 51% repeat-x,
+    radial-gradient(29.73px at 50% -22px, #0000 99%, #000 101%) 50% 20px/80px
+      calc(51% - 20px) repeat-x,
+    radial-gradient(29.73px at 50% calc(100% - 42px), #000 99%, #0000 101%)
+      calc(50% - 40px) 100%/80px 51% repeat-x,
+    radial-gradient(29.73px at 50% calc(100% + 22px), #0000 99%, #000 101%) 50%
+      calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+// Things to fo with :before and ::after
+
+// 1 - Add elements to the background
+// .intro {
+//   &:before {
+//     content: url() // Can add a logo there
+//     content: open-quote // can add open and close quotes (:before / :after)
+//     ..... others styles that can be added to style the content
+
+//   }
+// }
