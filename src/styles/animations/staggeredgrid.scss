@@ -1,5 +1,26 @@
+:root {
+  --color-primary: rgb(98, 0, 234);
+  --color-secondary: rgb(236, 64, 122);
+}
+
+@keyframes background-panning {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
 #grid-tiles {
-  background-color: rgb(20, 20, 20);
+  animation: background-panning 10s linear infinite;
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  background-size: 200%;
   height: 100vh;
   overflow: hidden;
   width: 100vw;
@@ -9,5 +30,17 @@
 }
 
 .grid-tile {
-  outline: 1px solid rgb(255, 255, 255);
+  position: relative;
+  &::before {
+    content: '';
+    background-color: rgb(20, 20, 20);
+    position: absolute;
+    inset: 0.5px; // leave 0.5 pixel wide around the edge of the tile
+    // could be sized
+    // height: calc(100% - 1px);
+    // width: calc(100% - 1px);
+  }
+  &:hover {
+    opacity: 0.95;
+  }
 }
