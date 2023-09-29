@@ -21,4 +21,19 @@ main#span-cards .card {
   width: 300px;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
+  &::before {
+    content: '';
+    background: radial-gradient(
+      800px circle at 100px 100px,
+      rgba(255, 255, 255, 0.1),
+      transparent 40%
+    );
+    position: absolute;
+    border-radius: inherit;
+    height: 100%;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+  }
 }
