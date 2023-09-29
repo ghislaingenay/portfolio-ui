@@ -1,0 +1,11 @@
+#grid-tiles {
+  background-color: rgb(20, 20, 20);
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  display: grid;
+}
+
+.grid-tile {
+  outline: 1px solid rgb(255, 255, 255);
+}
