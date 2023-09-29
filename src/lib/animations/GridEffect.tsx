@@ -24,11 +24,12 @@ function GridEffect() {
     };
 
     const setTiles = () => createTiles(getColumns() * getRows());
-
     setTiles();
 
     const createGrid = () => {
       wrapper.innerHTML = '';
+      wrapper.style.setProperty('--grid-columns', getColumns().toString());
+      wrapper.style.setProperty('--grid-rows', getRows().toString());
       setTiles();
     };
 
