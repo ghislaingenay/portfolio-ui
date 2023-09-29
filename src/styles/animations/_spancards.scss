@@ -20,32 +20,47 @@ main#span-cards {
 }
 
 main#span-cards .card {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.1);
   height: 260px;
   width: 300px;
   border-radius: 10px;
   cursor: pointer;
   position: relative;
   &:hover {
-    &::before {
+    &::before,
+    & > .card-border {
       opacity: 1;
     }
   }
-  &::before {
+
+  &:before,
+  & > .card-border {
     content: '';
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.1),
-      transparent 40%
-    );
     position: absolute;
     border-radius: inherit;
     height: 100%;
     inset: 0;
-    z-index: 2;
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+  }
+
+  &:before {
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%
+    );
+    z-index: 3;
+  }
+
+  & > .card-border {
+    background: radial-gradient(
+      400px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.3),
+      transparent 40%
+    );
+    z-index: 1;
   }
 }
 
@@ -55,5 +70,7 @@ main#span-cards .card .card-content {
   width: calc(100% - 2px);
   border-radius: inherit;
   margin: 1px;
+  z-index: 2;
+  position: relative;
   background-color: var(--card-color);
 }
