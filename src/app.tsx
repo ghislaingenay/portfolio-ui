@@ -1,10 +1,10 @@
-import { HackerText } from '@animations';
+import { SlidingTrack } from '@animations';
 import './styles.scss';
 
 export function App() {
   return (
     <div id="app">
-      <HackerText />
+      <SlidingTrack />
     </div>
   );
 }
