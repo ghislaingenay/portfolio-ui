@@ -18,7 +18,8 @@
       "@jp-mock/*": ["./src/lib/jp-language/*"],
       "@home/*": ["./src/lib/home/*"],
       "@starbucks/*": ["./src/lib/starbucks/*"],
-      "@animations": ["./src/lib/animations/index"]
+      "@animations": ["./src/lib/animations/index"],
+      "@animations/*": ["./src/lib/animations/*"]
     },
     "jsx": "react-jsx",
     "allowJs": false,
