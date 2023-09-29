@@ -21,17 +21,37 @@ function SlidingTrack() {
       if (track.dataset.mouseDownAt) {
         const distance = Number(track.dataset.mouseDownAt) - e.clientX;
         const percentage = -(distance / maxDelta) * 100;
-        const nextPercentage =
+        const nextPercentageNonConstrained =
           Number(track.dataset.prevPercentage) + percentage;
+        const nextPercentage = Math.max(
+          Math.min(nextPercentageNonConstrained, 0),
+          -100
+        );
         track.dataset.percentage = nextPercentage.toString();
-        track.style.transform = `translate(${nextPercentage}%, -50%)`;
+        track.animate(
+          {
+            transform: `translate(${nextPercentageNonConstrained}%, -50%)`,
+          },
+          { duration: 1200, fill: 'forwards' }
+        );
+
+        const images = document.getElementsByClassName(
+          'sliding-img'
+        ) as unknown as HTMLImageElement[];
+        for (const image of images) {
+          image.animate(
+            {
+              objectPosition: `${nextPercentage + 100}% center`,
+            },
+            { duration: 1200, fill: 'forwards' }
+          );
+        }
       }
     });
 
     window.addEventListener('mouseup', (e) => {
       track.dataset.mouseDownAt = '0';
       track.dataset.prevPercentage = track.dataset.percentage;
-      // track.style.transform = `translate(0%, -50%)`;
     });
   }, []);
   return (
