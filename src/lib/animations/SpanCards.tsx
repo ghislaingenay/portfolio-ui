@@ -27,12 +27,30 @@ function SpanCards() {
   return (
     <main id="span-cards">
       <div className="cards">
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card"></div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
+        <div className="card">
+          <div className="card-border"></div>
+          <div className="card-content"></div>
+        </div>
       </div>
     </main>
   );
