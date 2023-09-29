@@ -1,12 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // import { useState } from 'react';
+import { SpanCards } from '@animations';
 import './styles.scss';
 // import { JPMockUp } from '@jp-mock/JPLanguage';
 // import { Routing } from '@interface';
 // import ProjectPage from '@home/ProjectPage';
 // import MainNav from '@home/MainNav';
 // import StarbucksMockUp from '@starbucks/StarbucksMockUp';
-import { Confetti } from '@animations';
 
 export function App() {
   // const choseProject = (key: string) => {
@@ -32,7 +32,7 @@ export function App() {
     <div id="app">
       {/* <MainNav />
       <StarbucksMockUp /> */}
-      <Confetti />
+      <SpanCards />
     </div>
   );
 }
