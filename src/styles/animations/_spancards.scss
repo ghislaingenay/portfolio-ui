@@ -22,10 +22,15 @@ main#span-cards .card {
   border-radius: 10px;
   cursor: pointer;
   position: relative;
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
   &::before {
     content: '';
     background: radial-gradient(
-      800px circle at 100px 100px,
+      800px circle at var(--mouse-x) var(--mouse-y),
       rgba(255, 255, 255, 0.1),
       transparent 40%
     );
@@ -35,5 +40,7 @@ main#span-cards .card {
     inset: 0;
     z-index: 2;
     width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
 }
