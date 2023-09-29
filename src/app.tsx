@@ -1,10 +1,10 @@
-import { OptimalHeader } from '@animations';
+import { GridEffect } from '@animations';
 import './styles.scss';
 
 export function App() {
   return (
     <div id="app">
-      <OptimalHeader />
+      <GridEffect />
     </div>
   );
 }
