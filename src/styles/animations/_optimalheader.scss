@@ -6,9 +6,21 @@
 #opti-left-side {
   background-color: peru;
   z-index: 2;
+  h2 {
+    color: darkolivegreen;
+  }
+  & .fancy {
+    color: turquoise;
+  }
 }
 #opti-right-side {
   background-color: turquoise;
+  h2 {
+    color: purple;
+  }
+  & .fancy {
+    color: peru;
+  }
 }
 
 .opti-side {
@@ -24,5 +36,10 @@
     font-size: 8vw;
     margin: 0px 15vw;
     width: 70vw;
+    span {
+      font-family: 'Lobster', cursive;
+      font-size: 1.3em;
+      line-height: 0.8rem;
+    }
   }
 }
