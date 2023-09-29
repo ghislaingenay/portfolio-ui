@@ -30,7 +30,7 @@ const HackerText = () => {
         if (iterations > h1Element.dataset.value!.length) {
           clearInterval(intervalId);
         }
-        iterations += 1;
+        iterations += 1 / 3;
         return () => clearInterval(intervalId);
       }, 30);
 
