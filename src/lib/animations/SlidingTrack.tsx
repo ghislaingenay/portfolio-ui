@@ -9,8 +9,8 @@ import SlidingImage8 from '@animations/assets/sliding-track/image-8.jpg';
 import { useEffect } from 'react';
 
 function SlidingTrack() {
+  const getDelta = () => window.innerWidth / 2; // all the animation of the 8 pictures are done at 50% of the window size
   useEffect(() => {
-    const maxDelta = window.innerWidth / 2; // all the animation of the 8 pictures are done at 50% of the window size
     const track = document.getElementById('image-track') as HTMLElement;
     window.addEventListener('mousedown', (e) => {
       track.dataset.mouseDownAt = e.clientX.toString();
@@ -20,7 +20,7 @@ function SlidingTrack() {
       if (track.dataset.mouseDownAt === '0') return;
       if (track.dataset.mouseDownAt) {
         const distance = Number(track.dataset.mouseDownAt) - e.clientX;
-        const percentage = -(distance / maxDelta) * 100;
+        const percentage = -(distance / getDelta()) * 100;
         const nextPercentageNonConstrained =
           Number(track.dataset.prevPercentage) + percentage;
         const nextPercentage = Math.max(
