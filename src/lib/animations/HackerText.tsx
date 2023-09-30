@@ -37,8 +37,26 @@ const HackerText = () => {
       // const headerText = h1Element?.innerHTML;
     });
   }, []);
+
+  // blob
+  useEffect(() => {
+    const blob = document.getElementById('hack-blob');
+
+    document.body.onpointermove = (event) => {
+      const { clientX, clientY } = event;
+      blob?.animate(
+        {
+          left: `${clientX}px`,
+          top: `${clientY}px`,
+        },
+        { duration: 3000, fill: 'forwards' }
+      );
+    };
+  }, []);
   return (
     <main id="hack-text">
+      <div id="hack-blob" />
+      <div id="hack-blur" />
       <h1 data-value="HACKING SURU">HACKING SURU</h1>
     </main>
   );
