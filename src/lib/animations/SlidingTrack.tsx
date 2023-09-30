@@ -20,32 +20,43 @@ function SlidingTrack() {
       if (track.dataset.mouseDownAt === '0') return;
       if (track.dataset.mouseDownAt) {
         const distance = Number(track.dataset.mouseDownAt) - e.clientX;
-        const percentage = -(distance / getDelta()) * 100;
+        const percentage = (distance / getDelta()) * -100;
         const nextPercentageNonConstrained =
           Number(track.dataset.prevPercentage) + percentage;
+        console.log('not', nextPercentageNonConstrained);
+        const lastImage = document.querySelector('img.sliding-img:last-child');
+        console.log('he', lastImage, e.clientX, window.innerWidth);
+        const rectLast = lastImage?.getBoundingClientRect() as DOMRect;
+        const lastImgRight = rectLast.x + rectLast.width;
+        console.log('tr width', track.offsetWidth, track.clientWidth);
+        // Learn about offsetWidth, BoundingRect, clientWidth
+        console.log('tr', track.getBoundingClientRect());
+        // if (getDelta() > lastImgRight) {
+        // }
+        console.log('rect', rectLast);
         const nextPercentage = Math.max(
           Math.min(nextPercentageNonConstrained, 0),
-          -100
+          -450
         );
         track.dataset.percentage = nextPercentage.toString();
         track.animate(
           {
-            transform: `translate(${nextPercentageNonConstrained}%, -50%)`,
+            transform: `translate(${nextPercentage}%, -50%)`,
           },
           { duration: 1200, fill: 'forwards' }
         );
 
-        const images = document.getElementsByClassName(
-          'sliding-img'
-        ) as unknown as HTMLImageElement[];
-        for (const image of images) {
-          image.animate(
-            {
-              objectPosition: `${nextPercentage + 100}% center`,
-            },
-            { duration: 1200, fill: 'forwards' }
-          );
-        }
+        // const images = document.getElementsByClassName(
+        //   'sliding-img'
+        // ) as unknown as HTMLImageElement[];
+        // for (const image of images) {
+        //   image.animate(
+        //     {
+        //       objectPosition: `${nextPercentage + 100}% center`,
+        //     },
+        //     { duration: 1200, fill: 'forwards' }
+        //   );
+        // }
       }
     });
 
