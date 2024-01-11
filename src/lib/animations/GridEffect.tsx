@@ -7,7 +7,7 @@ function GridEffect() {
   useEffect(() => {
     const wrapper = document.getElementById('grid-tiles') as HTMLElement;
 
-    let toggle = false;
+    let toggle = true;
 
     const getColumns = () =>
       Math.floor(document.body.clientWidth / ARBITRARY_CUBE_SIZE);

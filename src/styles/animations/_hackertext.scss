@@ -1,11 +1,42 @@
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  50% {
+    scale: 1 1.5;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
 main#hack-text {
   background-color: rgb(20, 20, 20);
   height: 100vh;
   display: grid;
+  position: relative;
+  overflow: hidden;
+  #hack-blob {
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    height: 300px;
+    aspect-ratio: 1;
+    position: absolute;
+    inset: 50%;
+    animation: rotate 20s infinite;
+    translate: -50% -50%;
+    border-radius: 50%;
+  }
+  #hack-blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backdrop-filter: blur(200px);
+  }
   h1 {
     place-self: center;
     color: white;
     font-size: 5rem;
+    z-index: 3;
     font-family: 'Space Mono', monospace;
     // font-family: ;
   }
